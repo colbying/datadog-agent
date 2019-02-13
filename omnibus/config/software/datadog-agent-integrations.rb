@@ -178,7 +178,7 @@ build do
       command("#{python_bin} -m piptools compile --generate-hashes --output-file #{windows_safe_path(install_dir)}\\#{agent_requirements_file} #{static_reqs_filtered_file}")
     else
       pip "install -c #{project_dir}/#{core_constraints_file} --no-deps .", :env => nix_build_env, :cwd => "#{project_dir}/datadog_checks_base"
-      command("#{install_dir}/embedded/bin/python -m piptools compile --generate-hashes --output-file #{install_dir}/#{agent_requirements_file} #{static_reqs_filtered_file})
+      command("#{install_dir}/embedded/bin/python -m piptools compile --generate-hashes --output-file #{install_dir}/#{agent_requirements_file} #{static_reqs_filtered_file}")
     end
 
     # Uninstall the deps that pip-compile installs so we don't include them in the final artifact
